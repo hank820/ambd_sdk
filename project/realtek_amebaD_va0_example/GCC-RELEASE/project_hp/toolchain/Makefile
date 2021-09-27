@@ -18,9 +18,9 @@ all:
 
 ifneq ($(CONFIG_TOOLCHAIN_ARM_GCC), y)
 ifeq ($(COMPILEOS),$(LINUX_OS))
-	if [ ! -f asdk/asdk-6.4.1-linux-newlib-build-2773-i686.tar.bz2 ] ; then cat asdk/asdk-6.4.1-linux-newlib-build-2773-i686.tar.bz2* > asdk/asdk-6.4.1-linux-newlib-build-2773-i686.tar.bz2; fi;\
+	if [ ! -f asdk/asdk-9.3.0-linux-newlib-build-3483-x86_64.tar.bz2 ] ; then cat asdk/asdk-9.3.0-linux-newlib-build-3483-x86_64.tar.bz2.part* > asdk/asdk-9.3.0-linux-newlib-build-3483-x86_64.tar.bz2; fi;\
 	$(MKDIR) -p linux
-	tar -jxvf asdk/asdk-6.4.1-linux-newlib-build-2773-i686.tar.bz2 -C linux/
+	tar -jxvf asdk/asdk-9.3.0-linux-newlib-build-3483-x86_64.tar.bz2 -C linux/
 
 	#LZM for GCC Server build & Cygwin Download
 	#$(MKDIR) -p cygwin
