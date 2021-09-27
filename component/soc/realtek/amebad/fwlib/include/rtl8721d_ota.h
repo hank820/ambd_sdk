@@ -28,8 +28,9 @@
 #define MAX_IMG_NUM		2
 
 #define HTTP_OTA_UPDATE	
-#define HTTPS_OTA_UPDATE	
-#define SDCARD_OTA_UPDATE
+#define HTTPS_OTA_UPDATE
+// hank
+//#define SDCARD_OTA_UPDATE
 
 #if (defined HTTP_OTA_UPDATE) || (defined HTTPS_OTA_UPDATE)
 
@@ -170,7 +171,11 @@ u32 download_new_fw_from_server_http(u8* first_buf, unsigned int firstbuf_len, i
 int http_update_ota(char *host, int port, char *resource);
 #endif
 #ifdef HTTPS_OTA_UPDATE
-#include <mbedtls/config.h>
+#if !defined(MBEDTLS_CONFIG_FILE)
+#include "mbedtls/config.h"
+#else
+#include MBEDTLS_CONFIG_FILE
+#endif
 #include <mbedtls/platform.h>
 #include <mbedtls/net_sockets.h>
 #include <mbedtls/ssl.h>
