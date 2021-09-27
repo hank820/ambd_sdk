@@ -1,0 +1,68 @@
+# Prerequisites
+*.d
+*.i
+*.s
+*.ii
+
+# Object files
+*.o
+*.ko
+*.obj
+*.elf
+
+# Linker output
+*.ilk
+*.map
+*.exp
+
+# Precompiled Headers
+*.gch
+*.pch
+
+# Libraries
+*.lib
+*.a
+*.la
+*.lo
+
+# Shared objects (inc. Windows DLLs)
+*.dll
+*.so
+*.so.*
+*.dylib
+
+# Executables
+*.exe
+*.out
+*.app
+*.i*86
+*.x86_64
+*.hex
+
+# Debug files
+*.dSYM/
+*.su
+*.idb
+*.pdb
+
+# Kernel Module Compile Results
+*.mod*
+*.cmd
+.tmp_versions/
+modules.order
+Module.symvers
+Mkfile.old
+dkms.conf
+
+#firmware 
+project/realtek_amebaD_va0_example/GCC-RELEASE/project_hp/asdk/image/
+project/realtek_amebaD_va0_example/GCC-RELEASE/project_lp/asdk/image/
+#toolchain
+project/realtek_amebaD_va0_example/GCC-RELEASE/project_hp/toolchain/linux/
+project/realtek_amebaD_va0_example/GCC-RELEASE/project_lp/toolchain/linux/
+project/realtek_amebaD_va0_example/GCC-RELEASE/project_lp/toolchain/linux/asdk-9.3.0/*
+project/realtek_amebaD_va0_example/GCC-RELEASE/project_hp/toolchain/linux/asdk-9.3.0/*
+
+project/realtek_amebaD_va0_example/GCC-RELEASE/project_hp/asdk/build/
+project/realtek_amebaD_va0_example/GCC-RELEASE/project_lp/asdk/build/
+
