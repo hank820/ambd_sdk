@@ -10,6 +10,10 @@
 #ifndef LWIP_HDR_LWIPOPTS_H
 #define LWIP_HDR_LWIPOPTS_H
 
+#ifdef __cplusplus
+extern "C" {
+#endif
+
 #include <platform/platform_stdlib.h>
 #include "platform_opts.h"
 #define WIFI_LOGO_CERTIFICATION_CONFIG 0    //for ping 10k test buffer setting
@@ -105,8 +109,7 @@ a lot of data that needs to be copied, this should be set high. */
 #endif
 
 /* PBUF_POOL_BUFSIZE: the size of each pbuf in the pbuf pool. */
-#define PBUF_POOL_BUFSIZE       508
-
+#define PBUF_POOL_BUFSIZE       1280
 
 /* ---------- TCP options ---------- */
 #define LWIP_TCP                1
@@ -386,7 +389,12 @@ Certain platform allows computing and verifying the IP, UDP, TCP and ICMP checks
 /* Added by Realtek end */
 
 /* Extra options for lwip_v2.0.2 which should not affect lwip_v1.4.1 */
-#define LWIP_TCPIP_CORE_LOCKING         0
+#define LWIP_TCPIP_CORE_LOCKING         1
+#define LWIP_COMPAT_MUTEX_ALLOWED		1
+#define LWIP_IPV6_ND                    1
+#define LWIP_IPV6_SCOPES                0
+#define LWIP_PBUF_FROM_CUSTOM_POOLS     0
+
 #define ERRNO   1
 #define LWIP_TCPIP_TIMEOUT              1
 #define LWIP_SO_RCVTIMEO                1
@@ -395,12 +403,16 @@ Certain platform allows computing and verifying the IP, UDP, TCP and ICMP checks
 #undef LWIP_DEBUG
 #define LWIP_RAW                        1
 #define LWIP_AUTOIP                     1
-#define TCPIP_THREAD_NAME              "TCP_IP" 
+#define TCPIP_THREAD_NAME              "TCP_IP"
 
-#define LWIP_IPV6                       0
+#define LWIP_IPV6                       1
 #if LWIP_IPV6
+#define LWIP_IPV6_MLD                   1
+#define LWIP_IPV6_AUTOCONFIG            1
+#define LWIP_ICMP6                      1
 #undef  MEMP_NUM_SYS_TIMEOUT
 #define MEMP_NUM_SYS_TIMEOUT            13
+#define LWIP_IPV6_DHCP6                 1
 #endif
 
 /*CONFIG_LIBCOAP_ON is defined to 1 in the lib_coap project options preprocessor defined symbol
@@ -427,5 +439,9 @@ Certain platform allows computing and verifying the IP, UDP, TCP and ICMP checks
 #endif 
 
 #include "lwip/init.h"                  //for version control
+
+#ifdef __cplusplus
+}
+#endif
 
 #endif /* LWIP_HDR_LWIPOPTS_H */
