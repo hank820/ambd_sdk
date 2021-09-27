@@ -21,7 +21,9 @@
 #include "rtl8721d_soc_ps.h"
 #include "diag.h"
 #include "shell.h"
+#ifndef __cplusplus
 #include "rand.h"
+#endif
 #include "monitor_rom.h"
 #include "rtl8721d_syscfg.h"
 #include "rtl8721d_pmc.h"
