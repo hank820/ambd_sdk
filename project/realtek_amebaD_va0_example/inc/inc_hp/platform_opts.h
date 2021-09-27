@@ -66,6 +66,32 @@
 #endif
 #define CONFIG_ENABLE_RDP		0
 
+//IF Support MATTER
+#undef UART_SETTING_SECTOR
+#undef AP_SETTING_SECTOR
+#undef FTL_PHY_PAGE_START_ADDR
+#undef FAST_RECONNECT_DATA
+
+#define UART_SETTING_SECTOR             0x001D5000
+#define AP_SETTING_SECTOR               0x001D7000
+#define FTL_PHY_PAGE_START_ADDR         0x001D8000
+#define FAST_RECONNECT_DATA             0x001EB000
+
+// MATTER KVS
+#define MATTER_KVS_BEGIN_ADDR           0x001EC000  // 16K // DCT begin address of flash, ex: 0x100000 = 1M
+#define MATTER_KVS_MODULE_NUM           4           // max number of module
+#define MATTER_KVS_VARIABLE_NAME_SIZE   32          // max size of the variable name
+#define MATTER_KVS_VARIABLE_VALUE_SIZE  64 + 4      // max size of the variable value
+                                                    // max value number in moudle = 4024 / (32 + 64+4) = 40
+// MATTER KVS2, for key length large than 64
+#define MATTER_KVS_BEGIN_ADDR2	        0x001F0000  // 64K
+#define MATTER_KVS_MODULE_NUM2          16          // max number of module
+#define MATTER_KVS_VARIABLE_NAME_SIZE2  32          // max size of the variable name
+#define MATTER_KVS_VARIABLE_VALUE_SIZE2 1860 + 4    // max size of the variable value
+                                                    // max value number in moudle = 4024 / (32 + 1860+4) = 2
+#define MATTER_KVS_ENABLE_BACKUP        0
+#define MATTER_KVS_ENABLE_WEAR_LEVELING 0
+
 /**
  * For Wlan configurations
  */
