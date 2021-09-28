@@ -41,29 +41,7 @@ vpath %.c $(DIR) $(shell find $(DIR) -type d)
 #                               CFLAGS                                        #
 #*****************************************************************************#
 
-GLOBAL_CFLAGS += -DCHIP_SYSTEM_CONFIG_USE_LWIP=1
-GLOBAL_CFLAGS += -DCHIP_SYSTEM_CONFIG_USE_SOCKETS=0
-GLOBAL_CFLAGS += -DCHIP_SYSTEM_CONFIG_POSIX_LOCKING=0
-GLOBAL_CFLAGS += -DINET_CONFIG_ENABLE_IPV4=1
 GLOBAL_CFLAGS += -DCHIP_PROJECT=1
-GLOBAL_CFLAGS += -DCHIP_DEVICE_LAYER_TARGET=AMBD
-GLOBAL_CFLAGS += -DUSE_ZAP_CONFIG
-GLOBAL_CFLAGS += -DCHIP_HAVE_CONFIG_H
-GLOBAL_CFLAGS += -DLWIP_IPV6_SCOPES=0
-
-GLOBAL_CFLAGS += -DLWIP_IPV6_ND=1
-GLOBAL_CFLAGS += -DLWIP_IPV6_SCOPES=0
-GLOBAL_CFLAGS += -DLWIP_PBUF_FROM_CUSTOM_POOLS=0
-
-GLOBAL_CFLAGS += -DCHIP_DEVICE_LAYER_NONE=0
-GLOBAL_CFLAGS += -DCHIP_SYSTEM_CONFIG_USE_ZEPHYR_NET_IF=0
-GLOBAL_CFLAGS += -DCHIP_SYSTEM_CONFIG_USE_BSD_IFADDRS=0
-GLOBAL_CFLAGS += -DCHIP_SYSTEM_CONFIG_USE_ZEPHYR_SOCKET_EXTENSIONS=0
-
-#CPPFLAGS += -std=gnu++11
-#CPPFLAGS += -std=c++14
-#CPPFLAGS += -fno-rtti
-CPPFLAGS += -Wno-unused-parameter
 
 #*****************************************************************************#
 #                               Include FILE LIST                             #
