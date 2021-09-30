@@ -20,8 +20,7 @@ INCDIR		=$(ROOTDIR)/../../../inc/inc_hp
 BASEDIR		= $(ROOTDIR)/../../../../..
 KM0_BUILDDIR	= $(ROOTDIR)/../../project_lp
 KM4_BUILDDIR	= $(ROOTDIR)/../../project_hp
-#CHIPDIR	    =$(BASEDIR)/third_party/connectedhomeip
-CHIPDIR         = /home/test/disk64_2/chip/ambd_sdk_with_chip/third_party/connectedhomeip
+CHIPDIR	        =$(BASEDIR)/../connectedhomeip
 
 TARGETDIR	=$(BASEDIR)/component/soc/realtek/amebad
 BOOTLOADER	=$(BASEDIR)/component/soc/realtek/amebad/bootloader
