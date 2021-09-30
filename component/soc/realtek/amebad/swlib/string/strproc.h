@@ -15,7 +15,7 @@
 #include "platform_autoconf.h"
 #include "basic_types.h"
 
-#ifndef isprint
+#ifndef __cplusplus
 #define in_range(c, lo, up)  ((u8)c >= lo && (u8)c <= up)
 #define isprint(c)           in_range(c, 0x20, 0x7f)
 #define isdigit(c)           in_range(c, '0', '9')
@@ -25,8 +25,8 @@
 
 #define isupper(c)	(((c)>='A')&&((c)<='Z'))
 #define islower(c)	(((c)>='a')&&((c)<='z'))
-#define isalpha(c)	(isupper(c) || islower(c))	
-#endif  
+#define isalpha(c)	(isupper(c) || islower(c))
+#endif
 
 
 extern _LONG_CALL_ int _vsscanf(const char *buf, const char *fmt, va_list args);

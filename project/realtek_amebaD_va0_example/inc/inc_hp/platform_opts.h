@@ -61,8 +61,8 @@
 #else
 #define UART_SETTING_SECTOR		0x000FC000
 #define AP_SETTING_SECTOR		0x000FE000
-#define FTL_PHY_PAGE_START_ADDR	0x00102000
-#define FAST_RECONNECT_DATA 	0x00105000
+#define FTL_PHY_PAGE_START_ADDR	0x001DC000
+#define FAST_RECONNECT_DATA 	0x001DF000
 #endif
 #define CONFIG_ENABLE_RDP		0
 
@@ -122,7 +122,7 @@
 #define CONFIG_INCLUDE_SIMPLE_CONFIG		1
 
 /*For fast reconnection*/
-#define CONFIG_EXAMPLE_WLAN_FAST_CONNECT	1
+#define CONFIG_EXAMPLE_WLAN_FAST_CONNECT	0
 
 /*For wowlan service settings*/
 #define CONFIG_WOWLAN_SERVICE           			0
@@ -140,7 +140,7 @@
 /*For MIMO pkt decode*/
 #define CONFIG_UNSUPPORT_PLCPHDR_RPT	0
 
-#define CONFIG_EXAMPLE_CM_BACKTRACE 0
+#define CONFIG_EXAMPLE_CM_BACKTRACE 1
 
 #endif //end of #if CONFIG_WLAN
 /*******************************************************************************/
@@ -696,5 +696,7 @@ in lwip_opt.h for support uart adapter*/
 #else
 #define CONFIG_BRIDGE                   0
 #endif
+
+#define CONFIG_EXAMPLE_MATTER 0
 
 #endif

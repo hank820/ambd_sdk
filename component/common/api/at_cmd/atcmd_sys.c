@@ -891,11 +891,127 @@ void fATSM(void *arg)
 }
 #endif
 
+
+extern uint16_t _ZN4chip12Base64DecodeEPKctPh(const char * in, uint16_t inLen, uint8_t * out);
+extern uint16_t _ZN4chip12Base64EncodeEPKhtPc(const uint8_t * in, uint16_t inLen, char * out);
+
+void TestBase64(const char * test)
+{
+    uint8_t buf[256];
+    char buf2[256];
+    uint16_t len;
+
+    strcpy((char *) buf, test);
+
+    len = _ZN4chip12Base64DecodeEPKctPh((char *) buf, strlen((char *) buf), buf);
+    printf("%s: ", test);
+    if (len != UINT16_MAX)
+    {
+        printf("(%d) ", len);
+        for (uint16_t i = 0; i < len; i++)
+            printf("%c", buf[i]);
+
+        len = _ZN4chip12Base64EncodeEPKhtPc(buf, len, buf2);
+        printf(" (%d) ", len);
+        for (uint16_t i = 0; i < len; i++)
+            printf("%c", buf2[i]);
+    }
+    else
+        printf("ERROR");
+    printf("\n");
+}
+
+extern void ChipTest(void);
+extern int32_t deinitPref(void);
+void chipapp(void *param)
+{
+	ChipTest();
+}
+
+void fATchipapp(void *arg)
+{
+	(void) arg;
+	printf("Chip Test:\r\n");
+	xTaskCreate(chipapp, "chipapp",
+                                4096 / sizeof(StackType_t), NULL,
+                                1, NULL);
+}
+
 void fATSt(void *arg)
 {
 	/* To avoid gcc warnings */
 	( void ) arg;
-	
+
+	deinitPref();
+    // src/lib/core/tests
+    #if 0
+    _Z20TestReferenceCountedv();
+    _Z11TestCHIPTLVv();
+    _Z16TestCHIPErrorStrv();
+    _Z16TestCHIPCallbackv();
+    #endif
+
+    // src/inet/tests
+    #if 0
+    _Z15TestInetAddressv();
+    _Z16TestInetErrorStrv();
+    //_Z16TestInetEndPointv();   // undefined reference sigaction
+	#endif
+
+    // src/system/tests
+    #if 0
+    _Z19TestSystemWakeEventv();
+    _Z15TestSystemTimerv();
+    _Z22TestSystemPacketBufferv();
+    _Z16TestSystemObjectv();
+    _Z18TestSystemErrorStrv();
+    _Z14TestTimeSourcev();
+    #endif
+
+    // src/lib/support/tests
+    #if 0
+    _Z16TestBufferReaderv();
+    _Z16TestBufferWriterv();
+    _Z14TestBytesToHexv();
+    //_Z17TestCHIPArgParserv();   // ParseArgs() returned false
+    _Z15TestCHIPCounterv();
+    _Z12TestMemAllocv();
+    _Z12TestErrorStrv();
+    _Z8TestPoolv();
+    _Z11TestSafeIntv();
+    _Z14TestSafeStringv();
+    _Z16TestScopedBufferv();
+    _Z26TestSerializableIntegerSetv();
+    _Z17TestStringBuilderv();
+	printf("TestTimeUtils : ");
+    _Z13TestTimeUtilsv();
+    #endif
+
+    // src/crypto/tests
+    #if 0
+    TestCHIPCryptoPAL();
+    #endif
+
+    // src/transport/tests
+    #if 0
+    _Z21TestPeerConnectionsFnv();
+    _Z15TestPASESessionv();
+    _Z17TestSecureSessionv();
+    //_Z20TestSecureSessionMgrv();    // undefined reference getppid
+    #endif
+
+    // src/messaging/tests
+    #if 0
+    _Z17TestMessageHeaderv();
+    #endif
+
+	// src/transport/raw/tests
+	#if 0
+	_Z17TestMessageHeaderv();
+	_Z7TestTCPv();				// undefined reference getppid
+	_Z7TestUDPv();				// undefined reference getppid
+	#endif
+
 	AT_PRINTK("[ATS#]: _AT_SYSTEM_TEST_");
 }
 
@@ -1609,6 +1725,7 @@ log_item_t at_sys_items[] = {
 	{"ATS@", fATSs,{NULL,NULL}},	// Debug message setting
 	{"ATS!", fATSc,{NULL,NULL}},	// Debug config setting
 	{"ATS#", fATSt,{NULL,NULL}},	// test command
+	{"ATS$", fATchipapp, {NULL, NULL}},
 	{"ATS?", fATSx,{NULL,NULL}},	// Help
 #if WIFI_LOGO_CERTIFICATION_CONFIG
 	{"ATSV", fATSV},				// Write SW version for wifi logo test

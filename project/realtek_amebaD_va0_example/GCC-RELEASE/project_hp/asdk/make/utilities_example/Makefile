@@ -191,6 +191,8 @@ ifeq ($(CONFIG_LINKKIT_AWSS), y)
 #CSRC += $(DIR)/linkkit/linkkit_awss_example.c
 endif
 
+CSRC += $(DIR)/matter_task/example_matter.c
+
 #azure examples
 # CSRC += $(DIR)/azure_iothub_telemetry/example_azure_iothub_telemetry.c
 # CSRC += $(DIR)/azure_iothub_x509/example_azure_iothub_x509.c
