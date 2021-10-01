@@ -78,4 +78,5 @@ clean:
 	@make -C ui clean
 	@make -C media clean
 	@make -C video clean
+	@make -C chip clean
 -include $(DEPS)

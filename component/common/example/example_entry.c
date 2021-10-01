@@ -392,6 +392,10 @@
 #include <amazon_freertos/example_amazon_freertos.h>
 #endif
 
+#if defined(CONFIG_EXAMPLE_MATTER) && CONFIG_EXAMPLE_MATTER
+#include <matter_task/example_matter.h>
+#endif
+
 /*
 	Preprocessor of example
 */
@@ -934,6 +938,10 @@ example_hilink();
 
 #if defined(CONFIG_EXAMPLE_SW_PTA) && CONFIG_EXAMPLE_SW_PTA
 	example_sw_pta();
+#endif
+
+#if defined(CONFIG_EXAMPLE_MATTER) && CONFIG_EXAMPLE_MATTER
+    example_matter_task();
 #endif
 
 }

@@ -141,6 +141,20 @@ image2_ns:LINK_APP_LIB += $(ROOTDIR)/lib/application/lib_wlan.a $(ROOTDIR)/lib/a
 mp_image2_ns:LINK_APP_LIB += $(ROOTDIR)/lib/application/lib_wlan_mp.a $(ROOTDIR)/lib/application/lib_wps.a
 endif
 
+#LINK_APP_LIB += $(ROOTDIR)/lib/application/libRawTransportTests.a
+#LINK_APP_LIB += $(ROOTDIR)/lib/application/libTransportLayerTests.a
+#LINK_APP_LIB += $(ROOTDIR)/lib/application/libNetworkTestHelpers.a
+#LINK_APP_LIB += $(ROOTDIR)/lib/application/libCoreTests.a
+#LINK_APP_LIB += $(ROOTDIR)/lib/application/libInetLayerTests.a
+#LINK_APP_LIB += $(ROOTDIR)/lib/application/libInetTestHelpers.a
+#LINK_APP_LIB += $(ROOTDIR)/lib/application/libMessagingLayerTests.a
+#LINK_APP_LIB += $(ROOTDIR)/lib/application/libSupportTests.a
+#LINK_APP_LIB += $(ROOTDIR)/lib/application/libSystemLayerTests.a
+#LINK_APP_LIB += $(ROOTDIR)/lib/application/libChipCryptoTests.a
+#LINK_APP_LIB += $(ROOTDIR)/lib/application/libnlunit-test.a
+LINK_APP_LIB += $(ROOTDIR)/lib/application/lib_main.a
+LINK_APP_LIB += $(ROOTDIR)/lib/application/libCHIP.a
+
 ifeq ($(CONFIG_LINKKIT_AWSS), y)
 LINK_APP_LIB += $(ROOTDIR)/lib/application/lib_aliiot.a
 endif
@@ -169,7 +183,8 @@ mp_image2_ns:build_target_folder copy_ld_img2 check_toolchain build_info.h make_
 image3_s: build_target_folder copy_ld_img3 check_toolchain build_info.h make_subdirs_secure linker_image3 
 mp_image3_s: build_target_folder copy_ld_img3 check_toolchain build_info.h make_subdirs_secure linker_image3
 bootloader: build_target_folder copy_ld_img1 check_toolchain build_info.h make_subdirs_bootloader linker_loader gen_rom_symbol
-lib_all: build_target_folder copy_ld_img2 check_toolchain build_info.h make_subdirs_lib  
+lib_all: build_target_folder copy_ld_img2 check_toolchain build_info.h make_subdirs_lib
+light: build_target_folder copy_ld_img2 check_toolchain build_info.h make_subdirs_lib_light
 
 #*****************************************************************************#
 #                      RULES TO CREATE DIRECTORY                              #
@@ -223,32 +238,39 @@ make_subdirs_bootloader:
 	@ rm -f $(RAM_OBJS_LIST)
 	@make -C make/bootloader all
 
+make_subdirs_lib_light:
+	@ rm -f $(RAM_OBJS_LIST)
+	make -C make/chip/lighting_app all
+	make -C make/chip_main/lighting_app all
+
 make_subdirs_lib:
 	@ rm -f $(RAM_OBJS_LIST)
-	@make -C make/wlan lib
+	#@make -C make/wlan lib
 	#@make -C make/wlan clean
 	#@make -C make/wlan lib_mp
 	#@make -C make/wlan clean
 	#@make -C make/wlan lib_lp	
-	@make -C make/cmsis-dsp all
-	@make -C make/wps all
-	@make -C make/network/httpc all
-	@make -C make/network/httpd all
-	@make -C make/network/websocket all
+	#@make -C make/cmsis-dsp all
+	#@make -C make/wps all
+	#@make -C make/network/httpc all
+	#@make -C make/network/httpd all
+	#@make -C make/network/websocket all
 	#@make -C make/network/http2 all
-	@make -C make/network/eap all
-	@make -C make/network/tftp all
-	@make -C make/file_system/dct all
+	#@make -C make/network/eap all
+	#@make -C make/network/tftp all
+	#@make -C make/file_system/dct all
 	#@make -C make/network/libcoap all
+	make -C make/chip/all_cluster_app all
+	make -C make/chip_main/all_cluster_app all
 #	MMF LIBRARY
 # 	@make -C make/audio/g711 all
 # 	@make -C make/audio/faac all
 # 	@make -C make/audio/haac all
 #	@make -C make/audio/speex all
-	@make -C make/media/rtp_codec all
+#	@make -C make/media/rtp_codec all
 #	@make -C make/network/rtsp all
-	@make -C make/media/mmfv2 all
-	@make -C make/video/v4l2 all
+#	@make -C make/media/mmfv2 all
+#	@make -C make/video/v4l2 all
 #	@make -C make/target/usb_otg/device/lib all
 #	@make -C make/target/usb_otg/host/lib all
 #	@make -C make/target/usb_otg/device_new/lib all
@@ -602,6 +624,11 @@ clean:
 	@make -C make_secure clean
 	# make -C config clean
 	make -C $(SCRIPTSDIR)/lxdialog clean
+
+	make -C make/chip/all_cluster_app clean
+	make -C make/chip_main/all_cluster_app clean
+	make -C make/chip/lighting_app clean
+	make -C make/chip_main/lighting_app clean
 
 clean_rom:
 	@make -C make_rom/make clean

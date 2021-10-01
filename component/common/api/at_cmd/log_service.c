@@ -464,7 +464,8 @@ void log_service(void *param)
 	}
 }
 
-#define STACKSIZE               1280
+// Hank
+#define STACKSIZE               4096
 void start_log_service(void)
 {
 	xTaskHandle CreatedTask;
