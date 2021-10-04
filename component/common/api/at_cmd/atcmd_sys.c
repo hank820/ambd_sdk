@@ -942,6 +942,10 @@ void fATSt(void *arg)
 	/* To avoid gcc warnings */
 	( void ) arg;
 
+	printf("xPortGetTotalHeapSize = %d \n",xPortGetTotalHeapSize());
+	printf("xPortGetFreeHeapSize = %d \n",xPortGetFreeHeapSize());
+	printf("xPortGetMinimumEverFreeHeapSize = %d \n",xPortGetMinimumEverFreeHeapSize());
+
 	deinitPref();
     // src/lib/core/tests
     #if 0
