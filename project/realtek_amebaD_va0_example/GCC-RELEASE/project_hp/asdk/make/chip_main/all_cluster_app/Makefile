@@ -31,7 +31,7 @@ DIR = $(SRCDIR)
 DIR += $(CHIPDIR)/src/app
 DIR += $(CHIPDIR)/src/app/server
 DIR += $(CHIPDIR)/examples/all-clusters-app/all-clusters-common
-DIR += $(CHIPDIR)/examples/all-clusters-app/ameba/main
+DIR += $(CHIPDIR)/examples/all-clusters-app/ambd/main
 DIR += $(CHIPDIR)/zzz_generated/all-clusters-app/zap-generated
 DIR += $(CHIPDIR)/zzz_generated/app-common/app-common/zap-generated/attributes
 
@@ -52,8 +52,8 @@ IFLAGS += -I$(CHIPDIR)/zzz_generated/app-common
 IFLAGS += -I$(CHIPDIR)/zzz_generated/all-clusters-app
 IFLAGS += -I$(CHIPDIR)/zzz_generated/all-clusters-app/zap-generated
 IFLAGS += -I$(CHIPDIR)/examples/all-clusters-app/all-clusters-common
-IFLAGS += -I$(CHIPDIR)/examples/all-clusters-app/ameba/main/include
-IFLAGS += -I$(CHIPDIR)/examples/all-clusters-app/ameba/build/chip/gen/include
+IFLAGS += -I$(CHIPDIR)/examples/all-clusters-app/ambd/main/include
+IFLAGS += -I$(CHIPDIR)/examples/all-clusters-app/ambd/build/chip/gen/include
 IFLAGS += -I$(CHIPDIR)/src/include/
 IFLAGS += -I$(CHIPDIR)/src/lib/
 IFLAGS += -I$(CHIPDIR)/src/
@@ -157,11 +157,11 @@ CPPSRC += $(CHIPDIR)/zzz_generated/all-clusters-app/zap-generated/CHIPClusters.c
 
 CPPSRC += $(CHIPDIR)/zzz_generated/app-common/app-common/zap-generated/attributes/Accessors.cpp
 
-CPPSRC += $(CHIPDIR)/examples/all-clusters-app/ameba/main/chipinterface.cpp
-CPPSRC += $(CHIPDIR)/examples/all-clusters-app/ameba/main/DeviceCallbacks.cpp
-CPPSRC += $(CHIPDIR)/examples/all-clusters-app/ameba/main/CHIPDeviceManager.cpp
-CPPSRC += $(CHIPDIR)/examples/all-clusters-app/ameba/main/Globals.cpp
-CPPSRC += $(CHIPDIR)/examples/all-clusters-app/ameba/main/LEDWidget.cpp
+CPPSRC += $(CHIPDIR)/examples/all-clusters-app/ambd/main/chipinterface.cpp
+CPPSRC += $(CHIPDIR)/examples/all-clusters-app/ambd/main/DeviceCallbacks.cpp
+CPPSRC += $(CHIPDIR)/examples/all-clusters-app/ambd/main/CHIPDeviceManager.cpp
+CPPSRC += $(CHIPDIR)/examples/all-clusters-app/ambd/main/Globals.cpp
+CPPSRC += $(CHIPDIR)/examples/all-clusters-app/ambd/main/LEDWidget.cpp
 
 #*****************************************************************************#
 #                               Object FILE LIST                              #
