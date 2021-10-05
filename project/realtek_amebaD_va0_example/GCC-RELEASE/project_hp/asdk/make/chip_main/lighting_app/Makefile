@@ -33,6 +33,7 @@ DIR += $(CHIPDIR)/src/app/server
 DIR += $(CHIPDIR)/examples/lighting-app/lighting-common
 DIR += $(CHIPDIR)/examples/lighting-app/ambd/main
 DIR += $(CHIPDIR)/zzz_generated/lighting-app/zap-generated
+DIR += $(CHIPDIR)/zzz_generated/app-common/app-common/zap-generated/attributes
 
 vpath %.cpp $(DIR) $(shell find $(DIR) -type d)
 vpath %.c $(DIR) $(shell find $(DIR) -type d)
@@ -40,35 +41,14 @@ vpath %.c $(DIR) $(shell find $(DIR) -type d)
 #                               CFLAGS                                        #
 #*****************************************************************************#
 
-GLOBAL_CFLAGS += -DCHIP_SYSTEM_CONFIG_USE_LWIP=1
-GLOBAL_CFLAGS += -DCHIP_SYSTEM_CONFIG_USE_SOCKETS=0
-GLOBAL_CFLAGS += -DCHIP_SYSTEM_CONFIG_POSIX_LOCKING=0
-GLOBAL_CFLAGS += -DINET_CONFIG_ENABLE_IPV4=1
 GLOBAL_CFLAGS += -DCHIP_PROJECT=1
-GLOBAL_CFLAGS += -DCHIP_DEVICE_LAYER_TARGET=AMBD
-GLOBAL_CFLAGS += -DUSE_ZAP_CONFIG
-GLOBAL_CFLAGS += -DCHIP_HAVE_CONFIG_H
-GLOBAL_CFLAGS += -DLWIP_IPV6_SCOPES=0
-
-GLOBAL_CFLAGS += -DLWIP_IPV6_ND=1
-GLOBAL_CFLAGS += -DLWIP_IPV6_SCOPES=0
-GLOBAL_CFLAGS += -DLWIP_PBUF_FROM_CUSTOM_POOLS=0
-
-GLOBAL_CFLAGS += -DCHIP_DEVICE_LAYER_NONE=0
-GLOBAL_CFLAGS += -DCHIP_SYSTEM_CONFIG_USE_ZEPHYR_NET_IF=0
-GLOBAL_CFLAGS += -DCHIP_SYSTEM_CONFIG_USE_BSD_IFADDRS=0
-GLOBAL_CFLAGS += -DCHIP_SYSTEM_CONFIG_USE_ZEPHYR_SOCKET_EXTENSIONS=0
-
-#CPPFLAGS += -std=gnu++11
-#CPPFLAGS += -std=c++14
-#CPPFLAGS += -fno-rtti
-CPPFLAGS += -Wno-unused-parameter
 
 #*****************************************************************************#
 #                               Include FILE LIST                             #
 #*****************************************************************************#
 
 #IFLAGS = -I$(DIR)./
+IFLAGS += -I$(CHIPDIR)/zzz_generated/app-common
 IFLAGS += -I$(CHIPDIR)/zzz_generated/lighting-app
 IFLAGS += -I$(CHIPDIR)/zzz_generated/lighting-app/zap-generated
 IFLAGS += -I$(CHIPDIR)/examples/lighting-app/lighting-common
@@ -102,14 +82,11 @@ CPPSRC += $(CHIPDIR)/src/app/ReadHandler.cpp
 CPPSRC += $(CHIPDIR)/src/app/WriteClient.cpp
 CPPSRC += $(CHIPDIR)/src/app/WriteHandler.cpp
 
-CPPSRC += $(CHIPDIR)/src/app/common/gen/attributes/Accessors.cpp
-
 CPPSRC += $(CHIPDIR)/src/app/server/Server.cpp
-CPPSRC += $(CHIPDIR)/src/app/server/RendezvousServer.cpp
 CPPSRC += $(CHIPDIR)/src/app/server/Mdns.cpp
 CPPSRC += $(CHIPDIR)/src/app/server/EchoHandler.cpp
 CPPSRC += $(CHIPDIR)/src/app/server/OnboardingCodesUtil.cpp
-CPPSRC += $(CHIPDIR)/src/app/server/StorablePeerConnection.cpp         #Base0505
+CPPSRC += $(CHIPDIR)/src/app/server/CommissioningWindowManager.cpp
 
 CPPSRC += $(CHIPDIR)/src/app/util/af-event.cpp
 CPPSRC += $(CHIPDIR)/src/app/util/af-main-common.cpp
@@ -147,6 +124,7 @@ CPPSRC += $(CHIPDIR)/src/app/clusters/software_diagnostics_server/software_diagn
 CPPSRC += $(CHIPDIR)/src/app/clusters/thread_network_diagnostics_server/thread_network_diagnostics_server.cpp
 CPPSRC += $(CHIPDIR)/src/app/clusters/wifi_network_diagnostics_server/wifi_network_diagnostics_server.cpp
 CPPSRC += $(CHIPDIR)/src/app/clusters/administrator-commissioning-server/administrator-commissioning-server.cpp
+CPPSRC += $(CHIPDIR)/src/app/clusters/general_diagnostics_server/general_diagnostics_server.cpp
 
 CPPSRC += $(CHIPDIR)/src/app/reporting/reporting-default-configuration.cpp
 CPPSRC += $(CHIPDIR)/src/app/reporting/reporting.cpp
@@ -156,7 +134,10 @@ CPPSRC += $(CHIPDIR)/zzz_generated/lighting-app/zap-generated/attribute-size.cpp
 CPPSRC += $(CHIPDIR)/zzz_generated/lighting-app/zap-generated/callback-stub.cpp
 CPPSRC += $(CHIPDIR)/zzz_generated/lighting-app/zap-generated/IMClusterCommandHandler.cpp
 
+CPPSRC += $(CHIPDIR)/zzz_generated/app-common/app-common/zap-generated/attributes/Accessors.cpp
+
 CPPSRC += $(CHIPDIR)/examples/lighting-app/ambd/main/chipinterface.cpp
+CPPSRC += $(CHIPDIR)/examples/lighting-app/ambd/main/DeviceCallbacks.cpp
 CPPSRC += $(CHIPDIR)/examples/lighting-app/ambd/main/CHIPDeviceManager.cpp
 CPPSRC += $(CHIPDIR)/examples/lighting-app/ambd/main/Globals.cpp
 CPPSRC += $(CHIPDIR)/examples/lighting-app/ambd/main/LEDWidget.cpp

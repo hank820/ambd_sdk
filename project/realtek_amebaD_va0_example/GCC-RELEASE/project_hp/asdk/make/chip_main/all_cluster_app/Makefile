@@ -144,6 +144,7 @@ CPPSRC += $(CHIPDIR)/src/app/clusters/thread_network_diagnostics_server/thread_n
 CPPSRC += $(CHIPDIR)/src/app/clusters/wifi_network_diagnostics_server/wifi_network_diagnostics_server.cpp
 CPPSRC += $(CHIPDIR)/src/app/clusters/administrator-commissioning-server/administrator-commissioning-server.cpp
 CPPSRC += $(CHIPDIR)/src/app/clusters/window-covering-server/window-covering-server.cpp
+CPPSRC += $(CHIPDIR)/src/app/clusters/general_diagnostics_server/general_diagnostics_server.cpp
 
 CPPSRC += $(CHIPDIR)/src/app/reporting/reporting-default-configuration.cpp
 CPPSRC += $(CHIPDIR)/src/app/reporting/reporting.cpp
