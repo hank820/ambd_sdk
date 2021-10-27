@@ -33,6 +33,7 @@ DIR += $(CHIPDIR)/src/app/server
 DIR += $(CHIPDIR)/examples/all-clusters-app/all-clusters-common
 DIR += $(CHIPDIR)/examples/all-clusters-app/ambd/main
 DIR += $(CHIPDIR)/zzz_generated/all-clusters-app/zap-generated
+DIR += $(CHIPDIR)/zzz_generated/app-common/app-common/zap-generated
 DIR += $(CHIPDIR)/zzz_generated/app-common/app-common/zap-generated/attributes
 
 vpath %.cpp $(DIR) $(shell find $(DIR) -type d)
@@ -84,7 +85,7 @@ CPPSRC += $(CHIPDIR)/src/app/WriteClient.cpp
 CPPSRC += $(CHIPDIR)/src/app/WriteHandler.cpp
 
 CPPSRC += $(CHIPDIR)/src/app/server/Server.cpp
-CPPSRC += $(CHIPDIR)/src/app/server/Mdns.cpp
+CPPSRC += $(CHIPDIR)/src/app/server/Dnssd.cpp
 CPPSRC += $(CHIPDIR)/src/app/server/EchoHandler.cpp
 CPPSRC += $(CHIPDIR)/src/app/server/OnboardingCodesUtil.cpp
 CPPSRC += $(CHIPDIR)/src/app/server/CommissioningWindowManager.cpp
@@ -117,7 +118,7 @@ CPPSRC += $(CHIPDIR)/src/app/clusters/groups-server/groups-server.cpp
 CPPSRC += $(CHIPDIR)/src/app/clusters/color-control-server/color-control-server.cpp
 CPPSRC += $(CHIPDIR)/src/app/clusters/content-launch-server/content-launch-server.cpp
 CPPSRC += $(CHIPDIR)/src/app/clusters/media-playback-server/media-playback-server.cpp
-CPPSRC += $(CHIPDIR)/src/app/clusters/temperature-measurement-server/temperature-measurement-server.cpp
+#CPPSRC += $(CHIPDIR)/src/app/clusters/temperature-measurement-server/temperature-measurement-server.cpp
 CPPSRC += $(CHIPDIR)/src/app/clusters/scenes/scenes.cpp
 CPPSRC += $(CHIPDIR)/src/app/clusters/basic/basic.cpp
 CPPSRC += $(CHIPDIR)/src/app/clusters/bindings/bindings.cpp
@@ -146,17 +147,19 @@ CPPSRC += $(CHIPDIR)/src/app/clusters/administrator-commissioning-server/adminis
 CPPSRC += $(CHIPDIR)/src/app/clusters/window-covering-server/window-covering-server.cpp
 CPPSRC += $(CHIPDIR)/src/app/clusters/general_diagnostics_server/general_diagnostics_server.cpp
 
-CPPSRC += $(CHIPDIR)/src/app/reporting/reporting-default-configuration.cpp
-CPPSRC += $(CHIPDIR)/src/app/reporting/reporting.cpp
+#CPPSRC += $(CHIPDIR)/src/app/reporting/reporting-default-configuration.cpp
+#CPPSRC += $(CHIPDIR)/src/app/reporting/reporting.cpp
 CPPSRC += $(CHIPDIR)/src/app/reporting/Engine.cpp
+
+CPPSRC += $(CHIPDIR)/zzz_generated/app-common/app-common/zap-generated/attributes/Accessors.cpp
+CPPSRC += $(CHIPDIR)/zzz_generated/app-common/app-common/zap-generated/cluster-objects.cpp
+
 
 CPPSRC += $(CHIPDIR)/zzz_generated/all-clusters-app/zap-generated/attribute-size.cpp
 CPPSRC += $(CHIPDIR)/zzz_generated/all-clusters-app/zap-generated/CHIPClientCallbacks.cpp
 CPPSRC += $(CHIPDIR)/zzz_generated/all-clusters-app/zap-generated/callback-stub.cpp
 CPPSRC += $(CHIPDIR)/zzz_generated/all-clusters-app/zap-generated/IMClusterCommandHandler.cpp
 CPPSRC += $(CHIPDIR)/zzz_generated/all-clusters-app/zap-generated/CHIPClusters.cpp
-
-CPPSRC += $(CHIPDIR)/zzz_generated/app-common/app-common/zap-generated/attributes/Accessors.cpp
 
 CPPSRC += $(CHIPDIR)/examples/all-clusters-app/ambd/main/chipinterface.cpp
 CPPSRC += $(CHIPDIR)/examples/all-clusters-app/ambd/main/DeviceCallbacks.cpp

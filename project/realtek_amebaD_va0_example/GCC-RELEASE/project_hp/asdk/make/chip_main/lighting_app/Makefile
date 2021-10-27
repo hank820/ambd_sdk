@@ -33,6 +33,7 @@ DIR += $(CHIPDIR)/src/app/server
 DIR += $(CHIPDIR)/examples/lighting-app/lighting-common
 DIR += $(CHIPDIR)/examples/lighting-app/ambd/main
 DIR += $(CHIPDIR)/zzz_generated/lighting-app/zap-generated
+DIR += $(CHIPDIR)/zzz_generated/app-common/app-common/zap-generated
 DIR += $(CHIPDIR)/zzz_generated/app-common/app-common/zap-generated/attributes
 
 vpath %.cpp $(DIR) $(shell find $(DIR) -type d)
@@ -83,7 +84,7 @@ CPPSRC += $(CHIPDIR)/src/app/WriteClient.cpp
 CPPSRC += $(CHIPDIR)/src/app/WriteHandler.cpp
 
 CPPSRC += $(CHIPDIR)/src/app/server/Server.cpp
-CPPSRC += $(CHIPDIR)/src/app/server/Mdns.cpp
+CPPSRC += $(CHIPDIR)/src/app/server/Dnssd.cpp
 CPPSRC += $(CHIPDIR)/src/app/server/EchoHandler.cpp
 CPPSRC += $(CHIPDIR)/src/app/server/OnboardingCodesUtil.cpp
 CPPSRC += $(CHIPDIR)/src/app/server/CommissioningWindowManager.cpp
@@ -126,15 +127,16 @@ CPPSRC += $(CHIPDIR)/src/app/clusters/wifi_network_diagnostics_server/wifi_netwo
 CPPSRC += $(CHIPDIR)/src/app/clusters/administrator-commissioning-server/administrator-commissioning-server.cpp
 CPPSRC += $(CHIPDIR)/src/app/clusters/general_diagnostics_server/general_diagnostics_server.cpp
 
-CPPSRC += $(CHIPDIR)/src/app/reporting/reporting-default-configuration.cpp
-CPPSRC += $(CHIPDIR)/src/app/reporting/reporting.cpp
+#CPPSRC += $(CHIPDIR)/src/app/reporting/reporting-default-configuration.cpp
+#CPPSRC += $(CHIPDIR)/src/app/reporting/reporting.cpp
 CPPSRC += $(CHIPDIR)/src/app/reporting/Engine.cpp
+
+CPPSRC += $(CHIPDIR)/zzz_generated/app-common/app-common/zap-generated/attributes/Accessors.cpp
+CPPSRC += $(CHIPDIR)/zzz_generated/app-common/app-common/zap-generated/cluster-objects.cpp
 
 CPPSRC += $(CHIPDIR)/zzz_generated/lighting-app/zap-generated/attribute-size.cpp
 CPPSRC += $(CHIPDIR)/zzz_generated/lighting-app/zap-generated/callback-stub.cpp
 CPPSRC += $(CHIPDIR)/zzz_generated/lighting-app/zap-generated/IMClusterCommandHandler.cpp
-
-CPPSRC += $(CHIPDIR)/zzz_generated/app-common/app-common/zap-generated/attributes/Accessors.cpp
 
 CPPSRC += $(CHIPDIR)/examples/lighting-app/ambd/main/chipinterface.cpp
 CPPSRC += $(CHIPDIR)/examples/lighting-app/ambd/main/DeviceCallbacks.cpp
