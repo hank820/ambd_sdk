@@ -245,6 +245,15 @@ enum RTW_IW_ENC_ALG {
 	RTW_ENCODE_ALG_AES_CMAC //IGTK
 };
 
+/* SIOCSIWENCODEEXT definitions */
+#define IW_ENCODE_SEQ_MAX_SIZE	8
+/* struct iw_encode_ext ->alg */
+#define IW_ENCODE_ALG_NONE	0
+#define IW_ENCODE_ALG_WEP	1
+#define IW_ENCODE_ALG_TKIP	2
+#define IW_ENCODE_ALG_CCMP	3
+#define IW_ENCODE_ALG_PMK   4
+#define IW_ENCODE_ALG_AES_CMAC  5 //IGTK
 
 /* struct rtw_encode_ext ->ext_flags */
 #define RTW_ENCODE_EXT_RX_SEQ_VALID	0x00000002

@@ -146,6 +146,10 @@ CPPSRC += $(CHIPDIR)/src/app/clusters/wifi_network_diagnostics_server/wifi_netwo
 CPPSRC += $(CHIPDIR)/src/app/clusters/administrator-commissioning-server/administrator-commissioning-server.cpp
 CPPSRC += $(CHIPDIR)/src/app/clusters/window-covering-server/window-covering-server.cpp
 CPPSRC += $(CHIPDIR)/src/app/clusters/general_diagnostics_server/general_diagnostics_server.cpp
+CPPSRC += $(CHIPDIR)/src/app/clusters/mode-select-server/mode-select-server.cpp
+CPPSRC += $(CHIPDIR)/src/app/clusters/mode-select-server/static-supported-modes-manager.cpp
+CPPSRC += $(CHIPDIR)/src/app/clusters/thermostat-server/thermostat-server.cpp
+CPPSRC += $(CHIPDIR)/src/app/clusters/thermostat-user-interface-configuration-server/thermostat-user-interface-configuration-server.cpp
 
 #CPPSRC += $(CHIPDIR)/src/app/reporting/reporting-default-configuration.cpp
 #CPPSRC += $(CHIPDIR)/src/app/reporting/reporting.cpp
